@@ -1,4 +1,4 @@
-# reviewers.kr
+# reviewers
 
 세상의 모든 것을 리뷰할 수 있는 커뮤니티 플랫폼입니다.
 

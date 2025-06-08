@@ -23,10 +23,12 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" 
         />
       </head>
-      <body className="font-pretendard antialiased">
+      <body className="font-pretendard antialiased overflow-x-hidden">
         <AuthProvider>
-          <Header />
-          <main>{children}</main>
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+          </div>
         </AuthProvider>
       </body>
     </html>
