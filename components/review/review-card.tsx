@@ -32,8 +32,8 @@ export function ReviewCard({ review }: ReviewCardProps) {
         key={i}
         className={`h-4 w-4 ${
           i < rating 
-            ? 'fill-yellow-400 text-yellow-400' 
-            : 'text-gray-300'
+            ? 'fill-primary text-primary' 
+            : 'text-muted-foreground'
         }`}
       />
     ))
@@ -111,7 +111,7 @@ export function ReviewCard({ review }: ReviewCardProps) {
             {review.tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full"
+                className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full border border-border"
               >
                 #{tag}
               </span>

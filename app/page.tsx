@@ -111,7 +111,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-background border-b">
+      <section className="bg-gradient-to-b from-primary/10 to-background border-b border-border">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -123,17 +123,17 @@ export default function Home() {
               자유롭게 리뷰하고 다른 사람들의 의견을 들어보세요
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link href="/write">
+              <Link href="/write">
+                <Button size="lg" className="w-full sm:w-auto">
                   <PlusCircle className="h-5 w-5 mr-2" />
                   첫 리뷰 작성하기
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/requests">
+                </Button>
+              </Link>
+              <Link href="/requests">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto">
                   리뷰 요청 보기
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/auth-context'
 import { useRouter } from 'next/navigation'
 import { Star, Upload, X } from 'lucide-react'
@@ -22,8 +22,13 @@ export default function WriteReviewPage() {
   const { user } = useAuth()
   const router = useRouter()
 
+  useEffect(() => {
+    if (!user) {
+      router.push('/login')
+    }
+  }, [user, router])
+
   if (!user) {
-    router.push('/login')
     return null
   }
 
@@ -79,8 +84,8 @@ export default function WriteReviewPage() {
         <Star
           className={`h-8 w-8 transition-colors ${
             i < (hoverRating || rating)
-              ? 'fill-yellow-400 text-yellow-400'
-              : 'text-gray-300 hover:text-yellow-400'
+              ? 'fill-primary text-primary'
+              : 'text-muted-foreground hover:text-primary'
           }`}
         />
       </button>
@@ -192,7 +197,7 @@ export default function WriteReviewPage() {
                 {tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="inline-flex items-center px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm"
+                    className="inline-flex items-center px-3 py-1 bg-muted text-muted-foreground border border-border rounded-full text-sm"
                   >
                     #{tag}
                     <button

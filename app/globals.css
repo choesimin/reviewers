@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --primary: #6366f1;
-  --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #475569;
-  --muted: #f8fafc;
-  --muted-foreground: #64748b;
-  --border: #e2e8f0;
+  --background: #000000;
+  --foreground: #ffffff;
+  --primary: #fbbf24;
+  --primary-foreground: #000000;
+  --secondary: #1f1f1f;
+  --secondary-foreground: #ffffff;
+  --muted: #2a2a2a;
+  --muted-foreground: #a1a1aa;
+  --border: #404040;
   --radius: 0.5rem;
 }
 
@@ -29,15 +29,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f172a;
-    --foreground: #f1f5f9;
-    --primary: #6366f1;
-    --primary-foreground: #ffffff;
-    --secondary: #1e293b;
-    --secondary-foreground: #cbd5e1;
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
-    --border: #334155;
+    --background: #000000;
+    --foreground: #ffffff;
+    --primary: #fbbf24;
+    --primary-foreground: #000000;
+    --secondary: #1f1f1f;
+    --secondary-foreground: #ffffff;
+    --muted: #2a2a2a;
+    --muted-foreground: #a1a1aa;
+    --border: #404040;
   }
 }
 
@@ -54,4 +54,43 @@ body {
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Custom hover effects for yellow/black theme */
+.hover-primary {
+  transition: all 0.2s ease-in-out;
+}
+
+.hover-primary:hover {
+  color: var(--primary);
+}
+
+/* Custom focus rings */
+.focus-ring-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+/* Yellow accent glow effect */
+.glow-primary {
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+  opacity: 0.8;
 }
