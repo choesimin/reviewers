@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useAuth } from '@/contexts/auth-context'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { GoogleLoginButton, KakaoLoginButton, NaverLoginButton } from '@/components/auth/social-login'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -84,6 +85,21 @@ export default function LoginPage() {
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? '로그인 중...' : '로그인'}
           </Button>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-border" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">또는</span>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <GoogleLoginButton />
+            <KakaoLoginButton />
+            <NaverLoginButton />
+          </div>
           
           <p className="text-center text-sm text-muted-foreground">
             계정이 없으신가요?{' '}
