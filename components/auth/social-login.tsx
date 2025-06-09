@@ -4,14 +4,14 @@ import { useAuth } from '@/contexts/auth-context'
 import { useState } from 'react'
 
 interface SocialLoginButtonProps {
-  provider: 'google' | 'kakao' | 'naver'
+  provider: 'google' | 'kakao'
   children: React.ReactNode
   className?: string
 }
 
 export function SocialLoginButton({ provider, children, className = '' }: SocialLoginButtonProps) {
   const [loading, setLoading] = useState(false)
-  const { signInWithGoogle, signInWithKakao, signInWithNaver } = useAuth()
+  const { signInWithGoogle, signInWithKakao } = useAuth()
 
   const handleLogin = async () => {
     setLoading(true)
@@ -22,9 +22,6 @@ export function SocialLoginButton({ provider, children, className = '' }: Social
           break
         case 'kakao':
           await signInWithKakao()
-          break
-        case 'naver':
-          await signInWithNaver()
           break
       }
     } catch (error) {
@@ -77,17 +74,6 @@ export function KakaoLoginButton() {
         <path fill="currentColor" d="M12 3c5.799 0 10.5 3.664 10.5 8.185 0 4.52-4.701 8.184-10.5 8.184a13.5 13.5 0 0 1-1.727-.11l-4.408 2.883c-.501.265-.678.236-.472-.413l.892-3.678c-2.88-1.46-4.785-3.99-4.785-6.866C1.5 6.665 6.201 3 12 3z"/>
       </svg>
       카카오로 로그인
-    </SocialLoginButton>
-  )
-}
-
-export function NaverLoginButton() {
-  return (
-    <SocialLoginButton provider="naver" className="bg-green-500 hover:bg-green-600 border-green-500 text-white">
-      <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
-        <path fill="currentColor" d="M16.273 12.845 7.376 0H0v24h7.726V11.156L16.624 24H24V0h-7.727v12.845z"/>
-      </svg>
-      네이버로 로그인
     </SocialLoginButton>
   )
 }

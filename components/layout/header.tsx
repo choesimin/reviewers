@@ -98,11 +98,8 @@ export function Header() {
             </>
           ) : (
             <div className="flex items-center space-x-2">
-              <Button variant="ghost" asChild>
-                <Link href="/login">로그인</Link>
-              </Button>
               <Button asChild>
-                <Link href="/signup">회원가입</Link>
+                <Link href="/login">로그인</Link>
               </Button>
             </div>
           )}

@@ -131,7 +131,7 @@ CREATE TABLE comments (
 ```
 /app                # Next.js App Router 페이지
   /login           # 로그인 페이지
-  /signup          # 회원가입 페이지
+  /login           # SNS 로그인 페이지 (Google, Kakao)
   /write           # 리뷰 작성 페이지
   /review/[id]     # 리뷰 상세 페이지
   /requests        # 리뷰 요청 목록
