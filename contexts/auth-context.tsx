@@ -8,7 +8,6 @@ interface AuthContextType {
   user: User | null
   loading: boolean
   signOut: () => Promise<void>
-  signInWithGoogle: () => Promise<void>
   signInWithKakao: () => Promise<void>
 }
 
@@ -62,16 +61,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (error) throw error
   }
 
-  const signInWithGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    })
-    if (error) throw error
-  }
-
   const signInWithKakao = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'kakao',
@@ -87,7 +76,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       user, 
       loading, 
       signOut,
-      signInWithGoogle,
       signInWithKakao
     }}>
       {children}

@@ -5,6 +5,7 @@ import { useAuth } from '@/contexts/auth-context'
 import { Button } from '@/components/ui/button'
 import { PenSquare, Search, User, LogOut, Star } from 'lucide-react'
 import { useState } from 'react'
+import { LoginButton } from '@/components/auth/login'
 
 export function Header() {
   const { user, signOut } = useAuth()
@@ -97,11 +98,7 @@ export function Header() {
               </div>
             </>
           ) : (
-            <div className="flex items-center space-x-2">
-              <Button asChild>
-                <Link href="/login">로그인</Link>
-              </Button>
-            </div>
+            <LoginButton />
           )}
         </nav>
       </div>

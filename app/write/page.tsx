@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/auth-context'
 import { useRouter } from 'next/navigation'
 import { Star, Upload, X } from 'lucide-react'
+import { KakaoLoginButton } from '@/components/auth/social-login'
 
 export default function WriteReviewPage() {
   const [title, setTitle] = useState('')
@@ -19,17 +20,37 @@ export default function WriteReviewPage() {
   const [images] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
   
-  const { user } = useAuth()
+  const { user, loading: authLoading } = useAuth()
   const router = useRouter()
 
-  useEffect(() => {
-    if (!user) {
-      router.push('/login')
-    }
-  }, [user, router])
+  if (authLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="w-8 h-8 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
+      </div>
+    )
+  }
 
   if (!user) {
-    return null
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background px-4">
+        <div className="max-w-md w-full text-center space-y-6">
+          <div>
+            <h1 className="text-2xl font-bold text-foreground">로그인이 필요합니다</h1>
+            <p className="mt-2 text-muted-foreground">
+              리뷰를 작성하려면 먼저 로그인해주세요
+            </p>
+          </div>
+          <KakaoLoginButton />
+          <button
+            onClick={() => router.back()}
+            className="text-sm text-muted-foreground hover:text-foreground"
+          >
+            이전 페이지로 돌아가기
+          </button>
+        </div>
+      </div>
+    )
   }
 
   const handleTagAdd = (e: React.KeyboardEvent) => {

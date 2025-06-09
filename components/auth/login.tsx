@@ -2,6 +2,7 @@
 
 import { useAuth } from '@/contexts/auth-context'
 import { useState } from 'react'
+import { Button } from '@/components/ui/button'
 
 export function LoginButton() {
   const [loading, setLoading] = useState(false)
@@ -19,22 +20,15 @@ export function LoginButton() {
   }
 
   return (
-    <button
+    <Button
       onClick={handleLogin}
       disabled={loading}
-      className="
-        inline-flex items-center justify-center px-3 py-2 
-        bg-blue-600 hover:bg-blue-700 
-        text-white font-medium text-sm rounded-md
-        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
-        disabled:opacity-50 disabled:cursor-not-allowed
-        transition-colors duration-200
-      "
+      size="sm"
     >
       {loading ? (
-        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-1" />
+        <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin mr-1" />
       ) : null}
       로그인
-    </button>
+    </Button>
   )
 }

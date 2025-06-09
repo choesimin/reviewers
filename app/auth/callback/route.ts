@@ -45,6 +45,6 @@ export async function GET(request: Request) {
     }
   }
 
-  // 오류가 발생한 경우 로그인 페이지로 리디렉션
-  return NextResponse.redirect(`${origin}/login?error=auth_failed`)
+  // 오류가 발생한 경우 메인 페이지로 리디렉션
+  return NextResponse.redirect(`${origin}/?error=auth_failed`)
 }
